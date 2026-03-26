@@ -2,18 +2,11 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Tour 360 - Tipon</title>
 
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"
-  />
-
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     html, body {
       margin: 0;
@@ -37,7 +30,6 @@
       height: 100%;
     }
 
-    /* PANEL FLOTANTE */
     #overlayPanel {
       position: absolute;
       top: 14px;
@@ -47,41 +39,17 @@
       max-height: calc(100vh - 28px);
       background: rgba(31, 147, 151, 0.82);
       backdrop-filter: blur(5px);
-      border: 1px solid rgba(255,255,255,0.10);
       border-radius: 16px;
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.35);
     }
 
     #panelHeader {
       padding: 16px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
       display: flex;
       justify-content: space-between;
       align-items: center;
-    }
-
-    #projectTitle {
-      margin: 0;
-      font-size: 18px;
-      font-weight: bold;
-    }
-
-    #projectSubtitle {
-      margin: 4px 0 0;
-      font-size: 12px;
-      color: rgba(255,255,255,0.7);
-    }
-
-    #togglePanelBtn {
-      border: none;
-      border-radius: 10px;
-      padding: 8px 10px;
-      background: rgba(255,255,255,0.12);
-      color: #fff;
-      cursor: pointer;
     }
 
     #zoneList {
@@ -100,11 +68,6 @@
       background: rgba(255,255,255,0.08);
       color: white;
       cursor: pointer;
-      text-align: left;
-    }
-
-    .zone-button:hover {
-      background: rgba(255,255,255,0.15);
     }
 
     .zone-button.active {
@@ -113,18 +76,6 @@
 
     #scenePanel {
       padding: 10px;
-      border-top: 1px solid rgba(255,255,255,0.08);
-    }
-
-    #sceneTitle {
-      font-size: 14px;
-      margin-bottom: 6px;
-    }
-
-    #sceneInfo {
-      font-size: 12px;
-      margin-bottom: 10px;
-      color: rgba(255,255,255,0.7);
     }
 
     .ctrl-btn {
@@ -134,102 +85,47 @@
       background: rgba(255,255,255,0.1);
       color: white;
       cursor: pointer;
+      margin: 4px 4px 0 0;
     }
 
-    .ctrl-btn:hover {
-      background: rgba(255,255,255,0.2);
-    }
-
-    /* HOTSPOTS */
-    .custom-hotspot {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: #0d6efd;
-      border: 2px solid #fff;
-      cursor: pointer;
-    }
-
-    .custom-hotspot::after {
-      content: "➜";
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      height: 100%;
-      color: white;
+    #sceneTitle {
       font-weight: bold;
+      margin-bottom: 6px;
     }
 
-    /* OCULTAR ELEMENTOS PANNELLUM */
-    .pnlm-title-box,
-    .pnlm-load-box,
-    .pnlm-loading {
-      display: none !important;
+    #projectTitle {
+      margin: 0;
+      font-size: 20px;
     }
 
-    /* COLAPSADO */
-    #overlayPanel.collapsed {
-      width: auto;
-      background:rgba(31, 147, 151, 0.82);
-      backdrop-filter: blur(8px);
-      border: none;
-      box-shadow: none;
-    }
-
-    #overlayPanel.collapsed #zoneList,
-    #overlayPanel.collapsed #scenePanel,
-    #overlayPanel.collapsed #projectSubtitle {
-      display: none;
-    }
-
-    @media (max-width: 768px) {
-      #overlayPanel {
-        width: calc(100% - 28px);
-      }
+    #projectSubtitle {
+      margin: 4px 0 0 0;
+      font-size: 13px;
+      opacity: 0.9;
     }
   </style>
+
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
 </head>
 
 <body>
-  <script type="module">
-import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160/build/three.module.js';
-import { VRButton } from 'https://cdn.jsdelivr.net/npm/three@0.160/examples/jsm/webxr/VRButton.js';
-
-const scene = new THREE.Scene();
-
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize(window.innerWidth, window.innerHeight);
-
-
-renderer.xr.enabled = true;
-
-document.body.appendChild(renderer.domElement);
-document.body.appendChild(VRButton.createButton(renderer));
-
-
-
-
-
-renderer.setAnimationLoop(() => {
-  renderer.render(scene, camera);
-});
-
-</script>
-
   <div id="viewerWrap">
     <div id="panorama"></div>
 
-  
     <div id="overlayPanel">
       <div id="panelHeader">
         <div>
           <h1 id="projectTitle">Cargando...</h1>
-          <p id="projectSubtitle">Tour virtual 360</p>
+          <p id="projectSubtitle">Tour VR 360</p>
         </div>
-        <button id="togglePanelBtn">☰</button>
+        <button id="togglePanelBtn" class="ctrl-btn">☰</button>
       </div>
 
       <div id="zoneList"></div>
@@ -237,19 +133,18 @@ renderer.setAnimationLoop(() => {
       <div id="scenePanel">
         <p id="sceneTitle">Sin escena</p>
         <p id="sceneInfo">Selecciona una zona</p>
-      
-        <button class="ctrl-btn" id="prevBtn">Anteriror</button>
-        <button class="ctrl-btn" id="nextBtn">Siguente</button>
-        <button class="ctrl-btn" id="fullscreenBtn" >⛶ Pantalla Completa</button> 
-         <a href="https://shinnn86.github.io/RMTour-Pachacamac/"> <button class="ctrl-btn" >Pachacamac</button>
-         </a>
-        
+
+        <button class="ctrl-btn" id="prevBtn">Anterior</button>
+        <button class="ctrl-btn" id="nextBtn">Siguiente</button>
+        <button class="ctrl-btn" id="fullscreenBtn">⛶ Pantalla Completa</button>
+
+        <a href="https://shinnn86.github.io/RMTour-Pachacamac/">
+          <button class="ctrl-btn" type="button">Pachacamac</button>
+        </a>
       </div>
     </div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
-  <script src="app.js"></script>
-
+  <script type="module" src="./app.js"></script>
 </body>
 </html>
