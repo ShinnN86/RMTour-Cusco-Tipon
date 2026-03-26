@@ -23,7 +23,7 @@ async function init() {
   try {
     initThree();
 
-    const response = await fetch("Manifest.json");
+    const response = await fetch("./Manifest.json");
     if (!response.ok) {
       throw new Error(`No se pudo cargar Manifest.json (${response.status})`);
     }
