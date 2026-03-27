@@ -10,11 +10,17 @@ let scene, camera, renderer, sphere, controls;
 let raycaster, pointer;
 let infoHotspot = null;
 
-// Detección por apuntado / mirada
+// Giroscopio nativo
+let gyroActivo = false;
+let gyroListenerActivo = false;
+let yaw = 0;
+let pitch = 0;
+
+// Detección por apuntado
 let gazeStartTime = null;
 let infoAbiertaPorApuntado = false;
 
-const GAZE_OPEN_DELAY = 700; // ms
+const GAZE_OPEN_DELAY = 700;
 const CENTER_GAZE_RADIUS = 0.16;
 
 // UI principal
@@ -27,6 +33,7 @@ const nextBtn = document.getElementById("nextBtn");
 const fullscreenBtn = document.getElementById("fullscreenBtn");
 const overlayPanel = document.getElementById("overlayPanel");
 const togglePanelBtn = document.getElementById("togglePanelBtn");
+const gyroBtn = document.getElementById("gyroBtn");
 
 // Menú Lugares
 const lugaresToggleBtn = document.getElementById("lugaresToggleBtn");
@@ -163,6 +170,10 @@ const infoEscenas = {
   ]
 };
 
+function esMovil() {
+  return /Android|iPhone|iPad|iPod|Mobile|Tablet/i.test(navigator.userAgent);
+}
+
 async function init() {
   try {
     initThree();
@@ -177,12 +188,20 @@ async function init() {
 
     bindLugaresMenu();
 
+    if (gyroBtn) {
+      gyroBtn.style.display = esMovil() ? "inline-block" : "none";
+    }
+
     if (manifest.zonas?.length > 0) {
       cargarZona(manifest.zonas[0].id);
+    } else {
+      sceneTitleEl.textContent = "Sin escenas";
+      sceneInfoEl.textContent = "No hay zonas registradas en el manifest.";
     }
   } catch (error) {
     console.error("Error al iniciar:", error);
-    sceneTitleEl.textContent = "Error al iniciar";
+    projectTitleEl.textContent = "Error";
+    sceneTitleEl.textContent = "No se pudo iniciar";
     sceneInfoEl.textContent = error.message;
   }
 }
@@ -199,6 +218,7 @@ function initThree() {
     1100
   );
   camera.position.set(0, 0, 0.1);
+  camera.rotation.order = "YXZ";
 
   renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
   renderer.setPixelRatio(window.devicePixelRatio);
@@ -234,7 +254,13 @@ function initThree() {
 
   renderer.setAnimationLoop(() => {
     if (!renderer.xr.isPresenting) {
-      controls.update();
+      if (gyroActivo) {
+        camera.rotation.order = "YXZ";
+        camera.rotation.y = yaw;
+        camera.rotation.x = pitch;
+      } else {
+        controls.update();
+      }
     }
 
     if (infoHotspot) {
@@ -507,6 +533,62 @@ function cerrarInfoEscena() {
   centerPointer?.classList.remove("active");
 }
 
+function manejarOrientacion(event) {
+  if (!gyroActivo) return;
+
+  const alpha = event.alpha;
+  const beta = event.beta;
+
+  if (alpha == null || beta == null) return;
+
+  yaw = THREE.MathUtils.degToRad(alpha);
+
+  const betaClamped = Math.max(-85, Math.min(85, beta));
+  pitch = THREE.MathUtils.degToRad(betaClamped);
+}
+
+async function activarGiroscopio() {
+  if (!esMovil()) return;
+
+  try {
+    if (
+      typeof DeviceOrientationEvent !== "undefined" &&
+      typeof DeviceOrientationEvent.requestPermission === "function"
+    ) {
+      const permission = await DeviceOrientationEvent.requestPermission();
+
+      if (permission !== "granted") {
+        alert("No se concedió permiso para usar el giroscopio.");
+        return;
+      }
+    }
+
+    if (!gyroListenerActivo) {
+      window.addEventListener("deviceorientation", manejarOrientacion, true);
+      gyroListenerActivo = true;
+    }
+
+    gyroActivo = true;
+    controls.enabled = false;
+
+    if (gyroBtn) {
+      gyroBtn.textContent = "Gyro ON";
+    }
+  } catch (error) {
+    console.error("Error activando giroscopio:", error);
+    alert("No se pudo activar el giroscopio en este dispositivo.");
+  }
+}
+
+function desactivarGiroscopio() {
+  gyroActivo = false;
+  controls.enabled = true;
+
+  if (gyroBtn) {
+    gyroBtn.textContent = "Giroscopio";
+  }
+}
+
 prevBtn?.addEventListener("click", () => {
   if (escenaActualIndex > 0) {
     cargarEscena(escenaActualIndex - 1);
@@ -519,13 +601,13 @@ nextBtn?.addEventListener("click", () => {
   }
 });
 
-fullscreenBtn?.addEventListener("click", () => {
+fullscreenBtn?.addEventListener("click", async () => {
   const elem = document.documentElement;
 
   if (!document.fullscreenElement) {
-    elem.requestFullscreen?.();
+    await elem.requestFullscreen?.();
   } else {
-    document.exitFullscreen?.();
+    await document.exitFullscreen?.();
   }
 });
 
@@ -535,6 +617,16 @@ togglePanelBtn?.addEventListener("click", () => {
 
 infoBtn?.addEventListener("click", abrirInfoEscena);
 closeInfoBtn?.addEventListener("click", cerrarInfoEscena);
+
+gyroBtn?.addEventListener("click", async () => {
+  if (!esMovil()) return;
+
+  if (gyroActivo) {
+    desactivarGiroscopio();
+  } else {
+    await activarGiroscopio();
+  }
+});
 
 infoModalOverlay?.addEventListener("click", (e) => {
   if (e.target === infoModalOverlay) {
