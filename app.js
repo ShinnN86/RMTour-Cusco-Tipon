@@ -242,7 +242,6 @@ function initThree() {
     }
 
     detectarApuntadoAutomatico();
-
     renderer.render(scene, camera);
   });
 
@@ -336,7 +335,8 @@ function onSceneMouseMove(event) {
   raycaster.setFromCamera(pointer, camera);
   const intersects = raycaster.intersectObject(infoHotspot, true);
 
-  renderer.domElement.style.cursor = intersects.length > 0 ? "pointer" : "default";
+  renderer.domElement.style.cursor =
+    intersects.length > 0 ? "pointer" : "default";
 }
 
 function onSceneClick(event) {
@@ -360,8 +360,7 @@ function updatePointer(event) {
 }
 
 function detectarApuntadoAutomatico() {
-  if (!infoHotspot || !camera || !raycaster) return;
-  if (!zonaActual) return;
+  if (!infoHotspot || !camera || !raycaster || !zonaActual) return;
 
   if (infoModalOverlay && !infoModalOverlay.classList.contains("hidden")) {
     gazeStartTime = null;
@@ -408,6 +407,8 @@ function onWindowResize() {
 }
 
 function cargarZona(zonaId) {
+  if (!manifest?.zonas) return;
+
   zonaActual = manifest.zonas.find((z) => z.id === zonaId);
   if (!zonaActual) return;
 
@@ -473,7 +474,8 @@ function actualizarPanelInfo() {
   if (!zonaActual) return;
 
   const archivo = zonaActual.imagenes[escenaActualIndex];
-  sceneTitleEl.textContent = `${zonaActual.nombre} - Escena ${escenaActualIndex + 1}`;
+  sceneTitleEl.textContent =
+    `${zonaActual.nombre} - Escena ${escenaActualIndex + 1}`;
   sceneInfoEl.textContent = `Archivo: ${archivo}`;
 
   prevBtn.disabled = escenaActualIndex === 0;
@@ -487,7 +489,8 @@ function abrirInfoEscena() {
   const dataEscena = dataZona?.[escenaActualIndex];
 
   infoCardTitle.textContent =
-    dataEscena?.titulo || `${zonaActual.nombre} - Escena ${escenaActualIndex + 1}`;
+    dataEscena?.titulo ||
+    `${zonaActual.nombre} - Escena ${escenaActualIndex + 1}`;
 
   infoCardContent.textContent =
     dataEscena?.texto || "No hay información registrada para esta escena.";
@@ -497,6 +500,7 @@ function abrirInfoEscena() {
 
 function cerrarInfoEscena() {
   if (!infoModalOverlay) return;
+
   infoModalOverlay.classList.add("hidden");
   gazeStartTime = null;
   infoAbiertaPorApuntado = false;
@@ -530,7 +534,6 @@ togglePanelBtn?.addEventListener("click", () => {
 });
 
 infoBtn?.addEventListener("click", abrirInfoEscena);
-
 closeInfoBtn?.addEventListener("click", cerrarInfoEscena);
 
 infoModalOverlay?.addEventListener("click", (e) => {
