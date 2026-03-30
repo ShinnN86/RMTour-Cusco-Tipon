@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tour 360 - Tipon</title>
 
   <style>
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
-    html, body {
+    html,
+    body {
       margin: 0;
       width: 100%;
       height: 100%;
@@ -29,22 +33,35 @@
       height: 100%;
     }
 
-    /* PANEL */
+    /* PANEL GENERAL */
     #overlayPanel {
       position: absolute;
       top: 18px;
       left: 18px;
-      width: 340px;
+      width: 350px;
       max-height: calc(100vh - 36px);
-      background: rgba(18,30,34,0.82);
-      backdrop-filter: blur(12px);
-      border-radius: 22px;
-      padding-bottom: 12px;
+      background: rgba(18, 30, 34, 0.78);
+      backdrop-filter: blur(14px);
+      border-radius: 24px;
       z-index: 20;
+      overflow: hidden;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      transition: transform 0.28s ease, opacity 0.22s ease;
+      transform-origin: top left;
+    }
+
+    #overlayPanel.collapsed {
+      transform: translateX(-82%);
+    }
+
+    #overlayPanel.collapsed #menuContent {
+      opacity: 0;
+      pointer-events: none;
     }
 
     #panelHeader {
-      padding: 16px;
+      padding: 18px 18px 12px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -52,37 +69,104 @@
 
     #projectTitle {
       margin: 0;
-      font-size: 18px;
-      font-weight: bold;
+      font-size: 19px;
+      font-weight: 700;
+      letter-spacing: 0.2px;
     }
 
     #projectSubtitle {
       margin: 4px 0 0;
       font-size: 12px;
-      opacity: 0.8;
+      opacity: 0.78;
     }
 
     .icon-btn {
-      width: 38px;
-      height: 38px;
+      width: 40px;
+      height: 40px;
       border: none;
-      border-radius: 10px;
-      background: rgba(255,255,255,0.1);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.08);
       color: white;
       cursor: pointer;
+      font-size: 16px;
     }
 
     #menuContent {
-      padding: 0 12px;
+      padding: 0 16px 16px;
+      overflow-y: auto;
+      max-height: calc(100vh - 100px);
+      transition: opacity 0.2s ease;
     }
 
-    /* DROPDOWN */
+    .menu-section {
+      padding: 14px 0;
+    }
+
+    .menu-section+.menu-section {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .section-label {
+      margin: 0 0 12px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      opacity: 0.65;
+    }
+
+    #scenePanel {
+      padding: 0;
+      background: transparent;
+      border-radius: 0;
+      margin-top: 0;
+    }
+
+    #sceneTitle {
+      margin: 0 0 6px;
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    #sceneInfo {
+      margin: 0 0 14px;
+      font-size: 13px;
+      line-height: 1.4;
+      opacity: 0.82;
+    }
+
+    .controls-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .ctrl-btn {
+      border: none;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.09);
+      color: white;
+      cursor: pointer;
+      font-size: 13px;
+      transition: background 0.2s ease, transform 0.15s ease;
+    }
+
+    .ctrl-btn:hover {
+      background: rgba(255, 255, 255, 0.14);
+      transform: translateY(-1px);
+    }
+
+    .lugares-wrapper {
+      padding-top: 2px;
+    }
+
     .menu-dropdown-btn {
       width: 100%;
       border: none;
-      border-radius: 14px;
-      padding: 12px;
-      background: rgba(255,255,255,0.08);
+      border-radius: 0;
+      padding: 6px 0 10px;
+      background: transparent;
       color: white;
       cursor: pointer;
       display: flex;
@@ -94,93 +178,278 @@
       display: flex;
       align-items: center;
       gap: 10px;
+      font-size: 15px;
+      font-weight: 600;
     }
 
     .menu-badge {
-      width: 28px;
-      height: 28px;
+      width: 30px;
+      height: 30px;
       border-radius: 50%;
-      background: rgba(255,255,255,0.15);
+      background: rgba(255, 255, 255, 0.10);
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-shrink: 0;
     }
 
     .chevron {
-      transition: transform 0.2s;
+      transition: transform 0.22s ease;
+      opacity: 0.8;
+      font-size: 14px;
     }
 
     .chevron.rotated {
       transform: rotate(180deg);
     }
 
-    /* LISTA */
     .lugares-list {
       max-height: 0;
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      transition: all 0.3s;
+      gap: 8px;
       opacity: 0;
+      transition: max-height 0.28s ease, opacity 0.22s ease, margin-top 0.22s ease;
+      margin-top: 0;
     }
 
     .lugares-list.open {
-      max-height: 500px;
+      max-height: 520px;
       opacity: 1;
-      margin-top: 10px;
+      margin-top: 6px;
     }
 
     .lugar-item {
       display: flex;
       align-items: center;
       gap: 12px;
-      padding: 10px;
-      border-radius: 14px;
+      padding: 8px 4px;
       border: none;
-      background: rgba(255,255,255,0.06);
+      background: transparent;
       color: white;
       cursor: pointer;
+      text-align: left;
+      border-radius: 12px;
+      transition: background 0.18s ease, padding-left 0.18s ease;
     }
 
     .lugar-item:hover {
-      background: rgba(255,255,255,0.12);
+      background: rgba(255, 255, 255, 0.06);
+      padding-left: 8px;
+    }
+
+    .lugar-item.active {
+      background: rgba(255, 255, 255, 0.08);
     }
 
     .lugar-icon {
-      width: 32px;
-      height: 32px;
+      width: 42px;
+      height: 42px;
       border-radius: 50%;
-      background: #00bcd4;
+      background: rgba(255, 255, 255, 0.08);
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-shrink: 0;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+    }
+
+    .lugar-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .lugar-text {
+      font-size: 14px;
+      line-height: 1.2;
+      opacity: 0.96;
+    }
+
+    /* MINI MAPA */
+    #miniMap {
+      position: absolute;
+      right: 18px;
+      bottom: 18px;
+      width: 300px;
+      background: rgba(18, 30, 34, 0.82);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 18px;
+      overflow: hidden;
+      z-index: 25;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.28);
+    }
+
+    .mini-map-header {
+      padding: 10px 14px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+      background: rgba(255, 255, 255, 0.06);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    #expandMapBtn {
+      border: none;
+      background: transparent;
+      color: white;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    #miniMapCanvas {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+    }
+
+    #miniMapImage {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .map-point {
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      transform: translate(-50%, -50%);
+      border: none;
+      border-radius: 50%;
+      background: #00d5ff;
+      box-shadow: 0 0 0 4px rgba(0, 213, 255, 0.2);
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    .map-point:hover {
+      transform: translate(-50%, -50%) scale(1.15);
+    }
+
+    .map-point.active {
+      background: #00ffcc;
+      box-shadow: 0 0 0 4px rgba(0, 255, 204, 0.25);
+    }
+
+    #gpsMarker {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: #ff3b30;
+      box-shadow:
+        0 0 0 4px rgba(255, 59, 48, 0.2),
+        0 0 18px rgba(255, 59, 48, 0.45);
+      z-index: 3;
+      transition: left 0.35s ease, top 0.35s ease;
+    }
+
+    #gpsMarker::after {
+      content: "";
+      position: absolute;
+      inset: 5px;
+      border-radius: 50%;
+      background: white;
+    }
+
+    /* MAPA GRANDE */
+    /* OVERLAY */
+    .map-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(6px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 200;
+    }
+
+    .map-overlay.hidden {
+      display: none;
+    }
+
+    /* MAPA GRANDE */
+    .map-expanded {
+      width: 85%;
+      max-width: 900px;
+      height: 80%;
+      background: rgba(20, 30, 35, 0.95);
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* HEADER */
+    .map-expanded-header {
+      padding: 12px 16px;
+      display: flex;
+      justify-content: space-between;
+      background: rgba(255, 255, 255, 0.05);
       font-weight: bold;
     }
 
-    /* SCENE PANEL */
-    #scenePanel {
-      margin-top: 10px;
-      padding: 12px;
-      background: rgba(255,255,255,0.05);
-      border-radius: 14px;
-    }
-
-    .ctrl-btn {
+    #closeMapBtn {
       border: none;
-      padding: 8px;
-      margin: 4px;
-      border-radius: 8px;
-      background: rgba(255,255,255,0.1);
+      background: transparent;
       color: white;
       cursor: pointer;
+      font-size: 18px;
+    }
+
+    /* CONTENIDO */
+    .map-expanded-content {
+      flex: 1;
+      position: relative;
+    }
+
+    /* CLON DEL MAPA */
+    .map-expanded-content #miniMapCanvas {
+      width: 100%;
+      height: 100%;
+    }
+
+    .map-expanded-content img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .map-stage {
+      position: relative;
+      width: min(100%, 900px);
+      height: auto;
+      aspect-ratio: 16 / 9;
+    }
+
+    .map-stage #miniMapCanvas {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .map-stage #miniMapImage {
+      width: 100%;
+      height: 100%;
+      object-fit: fill;
+      display: block;
     }
 
     /* MODAL */
     .modal-overlay {
       position: absolute;
       inset: 0;
-      background: rgba(0,0,0,0.6);
+      background: rgba(0, 0, 0, 0.6);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -197,15 +466,10 @@
       padding: 20px;
       border-radius: 16px;
       width: 300px;
+      position: relative;
     }
 
-    .close-btn {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-    }
-
-    /* 🎯 PUNTERO */
+    /* PUNTERO */
     #centerPointer {
       position: absolute;
       top: 50%;
@@ -242,122 +506,183 @@
       background: #00e5ff;
     }
 
+    .lugar-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 4px;
+      border: none;
+      background: transparent;
+      color: white;
+      cursor: pointer;
+      text-align: left;
+      border-radius: 12px;
+      transition: background 0.18s ease, padding-left 0.18s ease;
+      text-decoration: none;
+    }
   </style>
 
-  <!-- IMPORTMAP -->
   <script type="importmap">
   {
     "imports": {
       "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
- 
-      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.152.2/examples/jsm/"
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
     }
   }
   </script>
-
 </head>
 
 <body>
+  <div id="viewerWrap">
 
-<div id="viewerWrap">
+    <div id="panorama"></div>
 
-  <div id="panorama"></div>
-
-  <!-- 🎯 PUNTERO -->
-  <div id="centerPointer">
-    <div class="pointer-ring"></div>
-    <div class="pointer-dot"></div>
-  </div>
-
-  <!-- PANEL -->
-  <div id="overlayPanel">
-
-    <div id="panelHeader">
-      <div>
-        <h1 id="projectTitle">Cargando...</h1>
-        <p id="projectSubtitle">Tour VR</p>
-      </div>
-      <button id="togglePanelBtn" class="icon-btn">☰</button>
+    <div id="centerPointer">
+      <div class="pointer-ring"></div>
+      <div class="pointer-dot"></div>
     </div>
 
-    <div id="menuContent">
+    <div id="overlayPanel">
 
-      <!-- LUGARES -->
-      <button id="lugaresToggleBtn" class="menu-dropdown-btn">
-        <div class="menu-dropdown-left">
-          <div class="menu-badge">📍</div>
-          Lugares
+      <div id="panelHeader">
+        <div>
+          <h1 id="projectTitle">Cargando...</h1>
+          <p id="projectSubtitle">Tour VR</p>
         </div>
-        <div id="lugaresChevron" class="chevron">▼</div>
-      </button>
-
-      <div id="lugaresList" class="lugares-list">
-
-        <button class="lugar-item" data-zona="zona1">
-          <div class="lugar-icon">1</div>
-          Ingreso
-        </button>
-
-        <button class="lugar-item" data-zona="zona2">
-          <div class="lugar-icon">2</div>
-          Andenes
-        </button>
-
-        <button class="lugar-item" data-zona="zona3">
-          <div class="lugar-icon">3</div>
-          Canales
-        </button>
-
-        <button class="lugar-item" data-zona="zona1">
-          <div class="lugar-icon">4</div>
-          Vista Alta
-        </button>
-
-        <button class="lugar-item" data-zona="zona2">
-          <div class="lugar-icon">5</div>
-          Lateral
-        </button>
-
-        <button class="lugar-item" data-zona="zona3">
-          <div class="lugar-icon">6</div>
-          Ceremonial
-        </button>
-
-        <button class="lugar-item" data-zona="zona1">
-          <div class="lugar-icon">7</div>
-          Panorámica
-        </button>
-
+        <button id="togglePanelBtn" class="icon-btn">☰</button>
       </div>
 
-      <!-- CONTROLES -->
-      <div id="scenePanel">
-        <p id="sceneTitle">Sin escena</p>
-        <p id="sceneInfo">Selecciona una zona</p>
+      <div id="menuContent">
 
-        <button class="ctrl-btn" id="prevBtn">Anterior</button>
-        <button class="ctrl-btn" id="nextBtn">Siguiente</button>
-        <button class="ctrl-btn" id="fullscreenBtn">Pantalla</button>
-        <button class="ctrl-btn" id="infoBtn">Info</button>
-        <button class="ctrl-btn" id="gyroBtn">Giroscopio</button>
-        
+        <div class="menu-section">
+          <p class="section-label">Visor</p>
+
+          <div id="scenePanel">
+            <p id="sceneTitle">Sin escena</p>
+            <p id="sceneInfo">Selecciona una zona</p>
+
+            <div class="controls-grid">
+              <button class="ctrl-btn" id="prevBtn">Anterior</button>
+              <button class="ctrl-btn" id="nextBtn">Siguiente</button>
+              <button class="ctrl-btn" id="fullscreenBtn">Pantalla</button>
+              <button class="ctrl-btn" id="infoBtn">Info</button>
+              <button class="ctrl-btn" id="gyroBtn">Giroscopio</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-section lugares-wrapper">
+          <p class="section-label">Exploración</p>
+
+          <button id="lugaresToggleBtn" class="menu-dropdown-btn">
+            <div class="menu-dropdown-left">
+              <div class="menu-badge">📍</div>
+              <span>Lugares</span>
+            </div>
+            <div id="lugaresChevron" class="chevron">▼</div>
+          </button>
+
+          <div id="lugaresList" class="lugares-list">
+            <a class="lugar-item" href="">
+              <div class="lugar-icon">
+                <img src="iconos/Tipon.jpg" alt="Tipón">
+              </div>
+              <div class="lugar-text">Tipón</div>
+            </a>
+
+            <a class="lugar-item" href="https://shinnn86.github.io/RMTour-Pachacamac/">
+              <div class="lugar-icon">
+                <img src="iconos/Pachacamac.jpg" alt="Pachacamac">
+              </div>
+              <div class="lugar-text">Pachacamac</div>
+            </a>
+
+            <a class="lugar-item" href="raqchi.html">
+              <div class="lugar-icon">
+                <img src="icons/canales.png" alt="Raqchi">
+              </div>
+              <div class="lugar-text">Raqchi</div>
+            </a>
+
+            <a class="lugar-item" href="moray.html">
+              <div class="lugar-icon">
+                <img src="icons/vista-alta.png" alt="Moray">
+              </div>
+              <div class="lugar-text">Moray</div>
+            </a>
+
+            <a class="lugar-item" href="ollantaytambo.html">
+              <div class="lugar-icon">
+                <img src="icons/panoramica.png" alt="Ollantaytambo">
+              </div>
+              <div class="lugar-text">Ollantaytambo</div>
+            </a>
+
+            <a class="lugar-item" href="sacsayhuaman.html">
+              <div class="lugar-icon">
+                <img src="icons/ceremonial.png" alt="Sacsayhuamán">
+              </div>
+              <div class="lugar-text">Sacsayhuamán</div>
+            </a>
+
+            <a class="lugar-item" href="machupicchu.html">
+              <div class="lugar-icon">
+                <img src="icons/lateral.png" alt="Machu Picchu">
+              </div>
+              <div class="lugar-text">Machu Picchu</div>
+            </a>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div id="miniMap">
+      <div class="mini-map-header">
+        <span>Mapa</span>
+        <button id="expandMapBtn">⛶</button>
       </div>
 
+      <div id="miniMapCanvas">
+        <img id="miniMapImage" src="mapa/mapa-tipon.jpg" alt="Mapa de navegación">
+
+        <button class="map-point" data-zona="zona1" style="left: 31%; top: 69%;" title="Ingreso"></button>
+        <button class="map-point" data-zona="zona2" style="left: 74%; top: 33%;" title="Andenes"></button>
+        <button class="map-point" data-zona="zona3" style="left: 89%; top: 22%;" title="Canales"></button>
+        <button class="map-point" data-zona="zona4" style="left: 3%; top: 33%;" title="Vista Alta"></button>
+        <button class="map-point" data-zona="zona5" style="left: 16%; top: 10%;" title="Panorámica"></button>
+
+        <div id="gpsMarker"></div>
+      </div>
     </div>
+
+    <div id="mapOverlay" class="map-overlay hidden">
+      <div class="map-expanded">
+
+        <div class="map-expanded-header">
+          <span>Mapa de navegación</span>
+          <button id="closeMapBtn">✕</button>
+        </div>
+
+        <div class="map-expanded-content" id="mapExpandedContent">
+          <!-- aquí se clona el mapa -->
+        </div>
+
+      </div>
+    </div>
+
+    <div id="infoModalOverlay" class="modal-overlay hidden">
+      <div class="info-card">
+        <button id="closeInfoBtn">X</button>
+        <h2 id="infoCardTitle"></h2>
+        <p id="infoCardContent"></p>
+      </div>
+    </div>
+
   </div>
 
-  <!-- MODAL -->
-  <div id="infoModalOverlay" class="modal-overlay hidden">
-    <div class="info-card">
-      <button id="closeInfoBtn">X</button>
-      <h2 id="infoCardTitle"></h2>
-      <p id="infoCardContent"></p>
-    </div>
-  </div>
-
-</div>
-
-<script type="module" src="./app.js"></script>
-
+  <script type="module" src="./app.js"></script>
 </body>
+
 </html>
