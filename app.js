@@ -50,123 +50,43 @@ const infoCardContent = document.getElementById("infoCardContent");
 // Puntero central
 const centerPointer = document.getElementById("centerPointer");
 
+// Mini mapa
+const gpsMarker = document.getElementById("gpsMarker");
+const mapPoints = document.querySelectorAll(".map-point");
+
+// Coordenadas del mapa por zona
+const mapaCoords = {
+  zona1: { left: "31%", top: "69%" },
+  zona2: { left: "74%", top: "33%" },
+  zona3: { left: "89%", top: "22%" },
+  zona4: { left: "3%", top: "33%" },
+  zona5: { left: "16%", top: "10%" }
+};
+
 // Información por escena
 const infoEscenas = {
   zona1: [
-    {
-      titulo: "Zona 1 - Escena 1",
-      texto:
-        "Vista panorámica inicial de la Zona 1. Aquí se aprecia el entorno general y la distribución espacial del sitio."
-    },
-    {
-      titulo: "Zona 1 - Escena 2",
-      texto:
-        "En esta escena se observa una perspectiva más cercana del recorrido y de los principales elementos del entorno."
-    },
-    {
-      titulo: "Zona 1 - Escena 3",
-      texto:
-        "Esta escena permite identificar detalles arquitectónicos y visuales relevantes del espacio recorrido."
-    },
-    {
-      titulo: "Zona 1 - Escena 4",
-      texto:
-        "Vista complementaria de la Zona 1, útil para apreciar la continuidad del recorrido panorámico."
-    },
-    {
-      titulo: "Zona 1 - Escena 5",
-      texto: "Información descriptiva de esta escena."
-    },
-    {
-      titulo: "Zona 1 - Escena 6",
-      texto: "Información descriptiva de esta escena."
-    },
-    {
-      titulo: "Zona 1 - Escena 7",
-      texto: "Información descriptiva de esta escena."
-    }
+    { titulo: "Zona 1 - Escena 1", texto: "Información descriptiva de la Zona 1, escena 1." },
+    { titulo: "Zona 1 - Escena 2", texto: "Información descriptiva de la Zona 1, escena 2." },
+    { titulo: "Zona 1 - Escena 3", texto: "Información descriptiva de la Zona 1, escena 3." }
   ],
   zona2: [
-    {
-      titulo: "Zona 2 - Escena 1",
-      texto:
-        "Ingreso visual a la Zona 2 con una vista panorámica general del área."
-    },
-    {
-      titulo: "Zona 2 - Escena 2",
-      texto:
-        "En esta escena pueden apreciarse otros detalles del recorrido y del espacio circundante."
-    },
-    {
-      titulo: "Zona 2 - Escena 3",
-      texto: "Descripción de la escena 3 de la Zona 2."
-    },
-    {
-      titulo: "Zona 2 - Escena 4",
-      texto: "Descripción de la escena 4 de la Zona 2."
-    },
-    {
-      titulo: "Zona 2 - Escena 5",
-      texto: "Descripción de la escena 5 de la Zona 2."
-    },
-    {
-      titulo: "Zona 2 - Escena 6",
-      texto: "Descripción de la escena 6 de la Zona 2."
-    },
-    {
-      titulo: "Zona 2 - Escena 7",
-      texto: "Descripción de la escena 7 de la Zona 2."
-    },
-    {
-      titulo: "Zona 2 - Escena 8",
-      texto: "Descripción de la escena 8 de la Zona 2."
-    },
-    {
-      titulo: "Zona 2 - Escena 9",
-      texto: "Descripción de la escena 9 de la Zona 2."
-    }
+    { titulo: "Zona 2 - Escena 1", texto: "Información descriptiva de la Zona 2, escena 1." },
+    { titulo: "Zona 2 - Escena 2", texto: "Información descriptiva de la Zona 2, escena 2." },
+    { titulo: "Zona 2 - Escena 3", texto: "Información descriptiva de la Zona 2, escena 3." }
   ],
   zona3: [
-    {
-      titulo: "Zona 3 - Escena 1",
-      texto: "Vista de apertura de la Zona 3."
-    },
-    {
-      titulo: "Zona 3 - Escena 2",
-      texto: "Descripción de la escena 2 de la Zona 3."
-    },
-    {
-      titulo: "Zona 3 - Escena 3",
-      texto: "Descripción de la escena 3 de la Zona 3."
-    },
-    {
-      titulo: "Zona 3 - Escena 4",
-      texto: "Descripción de la escena 4 de la Zona 3."
-    },
-    {
-      titulo: "Zona 3 - Escena 5",
-      texto: "Descripción de la escena 5 de la Zona 3."
-    },
-    {
-      titulo: "Zona 3 - Escena 6",
-      texto: "Descripción de la escena 6 de la Zona 3."
-    },
-    {
-      titulo: "Zona 3 - Escena 7",
-      texto: "Descripción de la escena 7 de la Zona 3."
-    },
-    {
-      titulo: "Zona 3 - Escena 8",
-      texto: "Descripción de la escena 8 de la Zona 3."
-    },
-    {
-      titulo: "Zona 3 - Escena 9",
-      texto: "Descripción de la escena 9 de la Zona 3."
-    },
-    {
-      titulo: "Zona 3 - Escena 10",
-      texto: "Descripción de la escena 10 de la Zona 3."
-    }
+    { titulo: "Zona 3 - Escena 1", texto: "Información descriptiva de la Zona 3, escena 1." },
+    { titulo: "Zona 3 - Escena 2", texto: "Información descriptiva de la Zona 3, escena 2." },
+    { titulo: "Zona 3 - Escena 3", texto: "Información descriptiva de la Zona 3, escena 3." }
+  ],
+  zona4: [
+    { titulo: "Zona 4 - Escena 1", texto: "Información descriptiva de la Zona 4, escena 1." },
+    { titulo: "Zona 4 - Escena 2", texto: "Información descriptiva de la Zona 4, escena 2." }
+  ],
+  zona5: [
+    { titulo: "Zona 5 - Escena 1", texto: "Información descriptiva de la Zona 5, escena 1." },
+    { titulo: "Zona 5 - Escena 2", texto: "Información descriptiva de la Zona 5, escena 2." }
   ]
 };
 
@@ -187,6 +107,7 @@ async function init() {
     projectTitleEl.textContent = manifest.nombre || "Tour VR";
 
     bindLugaresMenu();
+    bindMiniMapa();
 
     if (gyroBtn) {
       gyroBtn.style.display = esMovil() ? "inline-block" : "none";
@@ -280,13 +201,30 @@ function bindLugaresMenu() {
     lugaresChevron?.classList.toggle("rotated");
   });
 
-  document.querySelectorAll(".lugar-item").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const zonaId = btn.dataset.zona;
+}
+
+function bindMiniMapa() {
+  mapPoints.forEach((point) => {
+    point.addEventListener("click", () => {
+      const zonaId = point.dataset.zona;
       if (zonaId) {
         cargarZona(zonaId);
       }
     });
+  });
+}
+
+function actualizarMiniMapa() {
+  if (!gpsMarker || !zonaActual) return;
+
+  const pos = mapaCoords[zonaActual.id];
+  if (!pos) return;
+
+  gpsMarker.style.left = pos.left;
+  gpsMarker.style.top = pos.top;
+
+  mapPoints.forEach((point) => {
+    point.classList.toggle("active", point.dataset.zona === zonaActual.id);
   });
 }
 
@@ -439,15 +377,16 @@ function cargarZona(zonaId) {
   if (!zonaActual) return;
 
   escenaActualIndex = 0;
-  marcarLugarActivo(zonaId);
+ // marcarLugarActivo(zonaId);
+  actualizarMiniMapa();
   cargarEscena(0);
 }
 
-function marcarLugarActivo(zonaId) {
+/*function marcarLugarActivo(zonaId) {
   document.querySelectorAll(".lugar-item").forEach((btn) => {
     btn.classList.toggle("active", btn.dataset.zona === zonaId);
   });
-}
+}*/
 
 function cargarEscena(index) {
   if (!zonaActual) return;
@@ -467,11 +406,10 @@ function cargarEscena(index) {
       escenaActualIndex = index;
       actualizarPanelInfo();
       cerrarInfoEscena();
+      actualizarPosicionHotspot();
 
       gazeStartTime = null;
       infoAbiertaPorApuntado = false;
-
-      actualizarPosicionHotspot();
     },
     undefined,
     (error) => {
@@ -491,6 +429,10 @@ function actualizarPosicionHotspot() {
     infoHotspot.position.set(40, -10, -110);
   } else if (zonaActual.id === "zona3") {
     infoHotspot.position.set(-45, -5, -115);
+  } else if (zonaActual.id === "zona4") {
+    infoHotspot.position.set(10, -8, -110);
+  } else if (zonaActual.id === "zona5") {
+    infoHotspot.position.set(-18, -12, -112);
   } else {
     infoHotspot.position.set(0, -20, -120);
   }
@@ -542,7 +484,6 @@ function manejarOrientacion(event) {
   if (alpha == null || beta == null) return;
 
   yaw = THREE.MathUtils.degToRad(alpha);
-
   const betaClamped = Math.max(-85, Math.min(85, beta));
   pitch = THREE.MathUtils.degToRad(betaClamped);
 }
@@ -639,5 +580,57 @@ document.addEventListener("keydown", (e) => {
     cerrarInfoEscena();
   }
 });
+const expandMapBtn = document.getElementById("expandMapBtn");
+const closeMapBtn = document.getElementById("closeMapBtn");
+const mapOverlay = document.getElementById("mapOverlay");
+const miniMapCanvas = document.getElementById("miniMapCanvas");
+const mapExpandedContent = document.getElementById("mapExpandedContent");
+
+expandMapBtn?.addEventListener("click", () => {
+  abrirMapaGrande();
+});
+
+closeMapBtn?.addEventListener("click", () => {
+  cerrarMapaGrande();
+});
+
+function abrirMapaGrande() {
+  if (!miniMapCanvas || !mapExpandedContent) return;
+
+  // Clonar mapa
+  const clone = miniMapCanvas.cloneNode(true);
+
+  // limpiar contenedor
+  mapExpandedContent.innerHTML = "";
+  mapExpandedContent.appendChild(clone);
+
+  mapOverlay.classList.remove("hidden");
+
+  // volver a bindear eventos del mapa
+  const puntos = clone.querySelectorAll(".map-point");
+  puntos.forEach(p => {
+    p.addEventListener("click", () => {
+      const zonaId = p.dataset.zona;
+      if (zonaId) cargarZona(zonaId);
+      cerrarMapaGrande();
+    });
+  });
+
+  // actualizar gps
+  const gps = clone.querySelector("#gpsMarker");
+  if (gps && zonaActual) {
+    const pos = mapaCoords[zonaActual.id];
+    if (pos) {
+      gps.style.left = pos.left;
+      gps.style.top = pos.top;
+    }
+  }
+}
+
+function cerrarMapaGrande() {
+  mapOverlay.classList.add("hidden");
+}
+
+
 
 init();
