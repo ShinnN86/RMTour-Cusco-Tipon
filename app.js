@@ -81,7 +81,7 @@ const infoEscenas = {
     { titulo: "Zona 3 - Escena 3", texto: "Información descriptiva de la Zona 3, escena 3." }
   ],
   zona4: [
-    { titulo: "Zona 4 - Escena 1", texto: "Información descriptiva de la Zona 4, escena 1." },
+    { titulo: "Zona 4 - Escena 1", texto: " Información descriptiva de la Zona 4, escena 1." },
     { titulo: "Zona 4 - Escena 2", texto: "Información descriptiva de la Zona 4, escena 2." }
   ],
   zona5: [
