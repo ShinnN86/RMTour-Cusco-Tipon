@@ -33,6 +33,7 @@ const nextBtn = document.getElementById("nextBtn");
 const fullscreenBtn = document.getElementById("fullscreenBtn");
 const overlayPanel = document.getElementById("overlayPanel");
 const togglePanelBtn = document.getElementById("togglePanelBtn");
+const floatingBtn = document.getElementById("floatingMenuBtn");
 const gyroBtn = document.getElementById("gyroBtn");
 
 // Menú Lugares
