@@ -59,11 +59,11 @@ const mapPoints = document.querySelectorAll(".map-point");
 
 // Coordenadas del mapa por zona
 const mapaCoords = {
-  zona1: { left: "31%", top: "69%" },
-  zona2: { left: "74%", top: "33%" },
-  zona3: { left: "89%", top: "22%" },
-  zona4: { left: "3%", top: "33%" },
-  zona5: { left: "16%", top: "10%" }
+  zona1: { left: "39.5%", top: "72%" },
+  zona2: { left: "65%", top: "29.5%" },
+  zona3: { left: "75%", top: "19%" },
+  zona4: { left: "19%", top: "30%" },
+  zona5: { left: "28%", top: "4.5%" }
 };
 
 const infoEscenas = {
@@ -247,7 +247,7 @@ function bindLugaresMenu() {
   });
 
 }
-
+//Enlaza los eventos del mapa y caraga la zona
 function bindMiniMapa() {
   mapPoints.forEach((point) => {
     point.addEventListener("click", () => {
@@ -258,16 +258,13 @@ function bindMiniMapa() {
     });
   });
 }
-
-function actualizarMiniMapa() {
+//Funcion para actualizar la posicion del marcador en el minimapa acorde a la zona seleccionada
+function actualizarMiniMapa() { 
   if (!gpsMarker || !zonaActual) return;
-
   const pos = mapaCoords[zonaActual.id];
   if (!pos) return;
-
   gpsMarker.style.left = pos.left;
   gpsMarker.style.top = pos.top;
-
   mapPoints.forEach((point) => {
     point.classList.toggle("active", point.dataset.zona === zonaActual.id);
   });
