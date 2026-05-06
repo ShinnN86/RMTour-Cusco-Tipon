@@ -528,7 +528,7 @@
       text-decoration: none;
     }
 
-    #floatingMenuBtn {
+   #floatingMenuBtn {
       position: fixed;
       top: 30px;
       left: 15px;
@@ -649,6 +649,29 @@
       }
     }
 
+    #toggleMapBtn {
+      position: fixed;
+      bottom: 320px;
+      right: 15px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      z-index: 1000;
+      
+    }
+
+    #miniMap.hidden {
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(20px);
+    }
+
+    #miniMap {
+      transition: all 0.3s ease;
+    }
+
 
 
     @media (max-width: 480px) {
@@ -676,21 +699,20 @@
 
     }
 
+    @media (min-width: 769px) {
+      #toggleMapBtn {
+        display: none;
+      }
+    }
+
 
     @media (max-width: 768px) {
 
-      /* estado normal (menú abierto) */
-      #overlayPanel:not(.collapsed)~#miniMap {
+
+      #miniMap.hidden {
         opacity: 0;
         pointer-events: none;
         transform: translateY(20px);
-      }
-
-
-      #overlayPanel.collapsed~#miniMap {
-        opacity: 1;
-        pointer-events: auto;
-        transform: translateY(0);
       }
 
       #miniMap {
@@ -707,7 +729,7 @@
         width: 100%;
         height: auto;
         max-height: 55vh;
-        /* solo límite, no fuerza tamaño */
+       
 
         border-radius: 0 0 20px 20px;
         transform: translateY(0);
