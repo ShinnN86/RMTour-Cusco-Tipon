@@ -64,30 +64,72 @@ const mapaCoords = {
   zona5: { left: "16%", top: "10%" }
 };
 
-// Información por escena
 const infoEscenas = {
   zona1: [
-    { titulo: "Zona 1 - Escena 1", texto: "Información descriptiva de la Zona 1, escena 1." },
-    { titulo: "Zona 1 - Escena 2", texto: "Información descriptiva de la Zona 1, escena 2." },
-    { titulo: "Zona 1 - Escena 3", texto: "Información descriptiva de la Zona 1, escena 3." }
+    { 
+      titulo: "Tipón", 
+      texto: "Bienvenido a Tipón, un complejo arqueológico inca conocido por su avanzado sistema hidráulico y su armonía con la naturaleza." 
+    },
+    { 
+      titulo: "Tipón", 
+      texto: "Bienvenido a Tipón, un complejo arqueológico inca conocido por su avanzado sistema hidráulico y su armonía con la naturaleza." 
+    },
+    { 
+      titulo: "Tipón", 
+      texto: "Bienvenido a Tipón, un complejo arqueológico inca conocido por su avanzado sistema hidráulico y su armonía con la naturaleza." 
+    }
   ],
+
   zona2: [
-    { titulo: "Zona 2 - Escena 1", texto: "Información descriptiva de la Zona 2, escena 1." },
-    { titulo: "Zona 2 - Escena 2", texto: "Información descriptiva de la Zona 2, escena 2." },
-    { titulo: "Zona 2 - Escena 3", texto: "Información descriptiva de la Zona 2, escena 3." }
+    { 
+     titulo: "Sistema de riego", 
+      texto: "El agua fluye de manera constante gracias a canales diseñados con gran precisión por los incas." 
+    },
+    { 
+      titulo: "Sistema de riego", 
+      texto: "El agua fluye de manera constante gracias a canales diseñados con gran precisión por los incas." 
+    },
+    { 
+      titulo: "Sistema de riego", 
+      texto: "El agua fluye de manera constante gracias a canales diseñados con gran precisión por los incas."
+      } 
   ],
+
   zona3: [
-    { titulo: "Zona 3 - Escena 1", texto: "Información descriptiva de la Zona 3, escena 1." },
-    { titulo: "Zona 3 - Escena 2", texto: "Información descriptiva de la Zona 3, escena 2." },
-    { titulo: "Zona 3 - Escena 3", texto: "Información descriptiva de la Zona 3, escena 3." }
+    { 
+       titulo: "Tipón", 
+      texto: "Bienvenido a Tipón, un complejo arqueológico inca conocido por su avanzado sistema hidráulico y su armonía con la naturaleza." 
+    },
+    { 
+       titulo: "Tipón", 
+      texto: "Bienvenido a Tipón, un complejo arqueológico inca conocido por su avanzado sistema hidráulico y su armonía con la naturaleza." 
+    },
+    { 
+      titulo: "Ingreso a Tipón", 
+      texto: "Bienvenido a Tipón, un complejo arqueológico inca conocido por su avanzado sistema hidráulico y su armonía con la naturaleza." 
+    }
   ],
+
   zona4: [
-    { titulo: "Zona 4 - Escena 1", texto: " Información descriptiva de la Zona 4, escena 1." },
-    { titulo: "Zona 4 - Escena 2", texto: "Información descriptiva de la Zona 4, escena 2." }
+    { 
+      titulo: "Tipón", 
+      texto: "Bienvenido a Tipón, un complejo arqueológico inca conocido por su avanzado sistema hidráulico y su armonía con la naturaleza." 
+    },
+    { 
+      titulo: "Tipón", 
+      texto: "Bienvenido a Tipón, un complejo arqueológico inca conocido por su avanzado sistema hidráulico y su armonía con la naturaleza." 
+    }
   ],
+
   zona5: [
-    { titulo: "Zona 5 - Escena 1", texto: "Información descriptiva de la Zona 5, escena 1." },
-    { titulo: "Zona 5 - Escena 2", texto: "Información descriptiva de la Zona 5, escena 2." }
+    { 
+       titulo: "Tipón", 
+      texto: "Bienvenido a Tipón, un complejo arqueológico inca conocido por su avanzado sistema hidráulico y su armonía con la naturaleza." 
+    },
+    { 
+      titulo: "Tipón", 
+      texto: "Bienvenido a Tipón, un complejo arqueológico inca conocido por su avanzado sistema hidráulico y su armonía con la naturaleza." 
+    }
   ]
 };
 
