@@ -552,9 +552,24 @@ fullscreenBtn?.addEventListener("click", async () => {
   }
 });
 
+// estado inicial
+floatingBtn.style.display = "none";
+
+// botón del panel (cerrar/abrir)
 togglePanelBtn?.addEventListener("click", () => {
-  overlayPanel?.classList.toggle("collapsed");
+  overlayPanel.classList.toggle("collapsed");
+
+  const isClosed = overlayPanel.classList.contains("collapsed");
+
+  floatingBtn.style.display = isClosed ? "block" : "none";
 });
+
+// botón flotante (abrir)
+floatingBtn?.addEventListener("click", () => {
+  overlayPanel.classList.remove("collapsed");
+  floatingBtn.style.display = "none";
+});
+
 
 infoBtn?.addEventListener("click", abrirInfoEscena);
 closeInfoBtn?.addEventListener("click", cerrarInfoEscena);
