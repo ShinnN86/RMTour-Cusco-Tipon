@@ -35,6 +35,8 @@ const overlayPanel = document.getElementById("overlayPanel");
 const togglePanelBtn = document.getElementById("togglePanelBtn");
 const floatingBtn = document.getElementById("floatingMenuBtn");
 const gyroBtn = document.getElementById("gyroBtn");
+const toggleMapBtn = document.getElementById("toggleMapBtn");
+const miniMap = document.getElementById("miniMap");
 
 // Menú Lugares
 const lugaresToggleBtn = document.getElementById("lugaresToggleBtn");
@@ -616,6 +618,10 @@ floatingBtn?.addEventListener("click", () => {
 
 infoBtn?.addEventListener("click", abrirInfoEscena);
 closeInfoBtn?.addEventListener("click", cerrarInfoEscena);
+
+toggleMapBtn.addEventListener("click", () => {
+  miniMap.classList.toggle("hidden");
+});
 
 gyroBtn?.addEventListener("click", async () => {
   if (!esMovil()) return;
