@@ -397,7 +397,7 @@
       flex-direction: column;
     }
 
-    /* HEADER */
+    
     .map-expanded-header {
       padding: 12px 16px;
       display: flex;
@@ -695,6 +695,33 @@
 
       #miniMap {
         transition: all 0.3s ease;
+      }
+    }
+
+    @media (max-width: 768px) {
+
+      #overlayPanel {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: auto;
+        max-height: 55vh;
+        /* solo límite, no fuerza tamaño */
+
+        border-radius: 0 0 20px 20px;
+        transform: translateY(0);
+      }
+
+      /* cuando se oculta */
+      #overlayPanel.collapsed {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+
+      #menuContent {
+        max-height: 50vh;
+        overflow-y: auto;
       }
     }
   </style>
