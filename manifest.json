@@ -1,0 +1,87 @@
+{
+  "nombre": "TIPON",
+  "zonas": [
+    {
+      "id": "zona1",
+      "nombre": "CaidaAgua",
+      "ruta": "lugares/CaidaAgua/",
+      "imagenes": [
+        "Agua-1.jpg", 
+        "Agua-2.jpg",
+        "Agua-3.jpg",
+        "Agua-4.jpg"
+      ]
+    },
+    {
+      "id": "zona2",
+      "nombre": "Andenerias",
+      "ruta": "lugares/Andenerias/",
+      "imagenes": [
+       "Andeneria-1.jpg",
+        "Andeneria-2.jpg",
+        "Andeneria-3.jpg",
+        "Andeneria-4.jpg",
+        "Andeneria-5.jpg",
+        "Andeneria-6.jpg",
+        "Andeneria-7.jpg",
+        "Andeneria-8.jpg",
+        "Andeneria-9.jpg",
+        "Andeneria-10.jpg"
+      ]
+    },
+    {
+      "id": "zona3",
+      "nombre": "FuenteAgua",
+      "ruta": "lugares/FuenteAgua/",
+      "imagenes": [
+        "FuenteAgua-1.jpg",
+        "FuenteAgua-2.jpg",
+        "FuenteAgua-3.jpg",
+        "FuenteAgua-4.jpg",
+        "FuenteAgua-5.jpg"
+      ]
+    },
+     {
+      "id": "zona4",
+      "nombre": "Intihuatana",
+      "ruta": "lugares/Intihuatana/",
+      "imagenes": [
+        "Intihuatana-1.jpg",
+        "Intihuatana-2.jpg",
+        "Intihuatana-3.jpg",
+        "Intihuatana-4.jpg",
+        "Intihuatana-5.jpg",
+        "Intihuatana-6.jpg",
+        "Intihuatana-7.jpg",
+        "Intihuatana-8.jpg",
+        "Intihuatana-9.jpg",
+        "Intihuatana-10.jpg",
+        "Intihuatana-11.jpg",
+        "Intihuatana-12.jpg",
+        "Intihuatana-13.jpg",
+        "Intihuatana-14.jpg"
+        
+      ]
+    }
+    ,
+     {
+      "id": "zona5",
+      "nombre": "CanalInca",
+      "ruta": "lugares/CanalInca/",
+      "imagenes": [
+        "Canal-1.jpg",
+        "Canal-2.jpg",
+        "Canal-3.jpg",
+        "Canal-4.jpg",
+        "Canal-5.jpg",
+        "Canal-6.jpg",
+        "Canal-7.jpg",
+        "Canal-8.jpg",
+        "Canal-9.jpg",
+        "Canal-10.jpg"
+  
+        
+      ]
+    }
+  ]
+}

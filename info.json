@@ -1,0 +1,478 @@
+{
+  "zona1": [
+    {
+      "titulo": "Tipon",
+      "subtitulo": "Caida de Agua",
+      "descripcion": "Bienvenidos a Tipón, uno de los complejos hidráulicos más impresionantes del mundo andino. Desde el ingreso, el sonido del agua marca la experiencia del visitante, anticipando el elemento central que define todo el sitio. La caída de agua que se observa en este primer punto no es un fenómeno natural sin intervención humana, sino parte de un sistema cuidadosamente diseñado por los incas.",
+      "imagen": "assets/img-text/agua.jpg",
+
+      "modeloUrl": "",
+
+      "audio": "audio/atipon.mp3",
+        "mostrarHotspot": true,
+        "camara": { "yaw": -1.2446, "pitch": -0.0681 }
+    },
+
+    {
+      "titulo": "Tipon",
+      "subtitulo": "Vista Interior",
+      "descripcion": "Descripción de la escena 2.",
+
+      "imagen": "imagenes/acllawasi2.jpg",
+
+      "modeloUrl": "",
+
+      "audio": "",
+        "mostrarHotspot": false,
+        "camara": { "yaw": -1.7049, "pitch": 0.1605 }
+    },
+
+    {
+      "titulo": "Tipon",
+      "subtitulo": "Vista General",
+      "descripcion": "Descripción de la escena 3.",
+
+      "imagen": "",
+
+      "modelo": "",
+
+      "audio": "audio/acllawasi.mp3",
+        "mostrarHotspot": false,
+        "camara": { "yaw": -1.1865, "pitch": 0.1286 }
+    },
+      {
+      "titulo": "Tipon",
+      "subtitulo": "Vista General",
+      "descripcion": "4",
+
+      "imagen": "",
+
+      "modelo": "",
+
+      "audio": "audio/acllawasi.mp3",
+        "mostrarHotspot": false,
+        "camara": { "yaw": -0.8260, "pitch": 0.1399 }
+    }
+  ],
+
+  "zona2": [
+    {
+      "titulo": "Tipon",
+      "subtitulo": "1",
+      "descripcion": "",
+      "imagen": "",
+      "modelo": "",
+      "audio": "",
+       "mostrarHotspot": false,
+       "camara": { "yaw": 1.6721, "pitch": -0.1248 }
+    },
+    {
+      "titulo": "Tipon",
+      "subtitulo": "2",
+      "descripcion": "",
+      "imagen": "",
+      "modelo": "",
+      "audio": "",
+      "mostrarHotspot": false,
+      "camara": { "yaw": 0.3016, "pitch": -0.0433 }
+    },
+    {
+      "titulo": "Tipon",
+      "subtitulo": "3",
+      "descripcion": "",
+      "imagen": "PiramideRampa/p1.jpg",
+      "modeloUrl": "https://shinnn86.github.io/Rampa/",
+      "audio": "audio/Rampa.mp3",
+      "mostrarHotspot": false,
+      "camara": { "yaw": -1.2791, "pitch": -0.0272 }
+
+      
+    },
+      {
+      "titulo": "Tipon",
+      "subtitulo": "3",
+      "descripcion": "",
+      "imagen": "PiramideRampa/p1.jpg",
+      "modeloUrl": "https://shinnn86.github.io/Rampa/",
+      "audio": "audio/Rampa.mp3",
+      "mostrarHotspot": false,
+      "camara": { "yaw": -1.8031, "pitch": -0.0939 }
+
+      
+    },
+      {
+      "titulo": "Tipon",
+      "subtitulo": "3",
+      "descripcion": "",
+      "imagen": "PiramideRampa/p1.jpg",
+      "modeloUrl": "https://shinnn86.github.io/Rampa/",
+      "audio": "audio/Rampa.mp3",
+      "mostrarHotspot": false,
+      "camara": { "yaw": -1.2717, "pitch": 0.0148 }
+
+      
+    },
+      {
+      "titulo": "Tipon",
+      "subtitulo": "3",
+      "descripcion": "",
+      "imagen": "PiramideRampa/p1.jpg",
+      "modeloUrl": "https://shinnn86.github.io/Rampa/",
+      "audio": "audio/Rampa.mp3",
+      "mostrarHotspot": false,
+      "camara": { "yaw": 2.0392, "pitch": 0.0531 }
+
+      
+    },
+      {
+      "titulo": "Tipon",
+      "subtitulo": "3",
+      "descripcion": "",
+      "imagen": "PiramideRampa/p1.jpg",
+      "modeloUrl": "https://shinnn86.github.io/Rampa/",
+      "audio": "audio/Rampa.mp3",
+      "mostrarHotspot": false,
+      "camara": { "yaw": 1.5980, "pitch": 0.0581 }
+
+      
+    },
+      {
+      "titulo": "Tipon",
+      "subtitulo": "3",
+      "descripcion": "",
+      "imagen": "PiramideRampa/p1.jpg",
+      "modeloUrl": "https://shinnn86.github.io/Rampa/",
+      "audio": "audio/Rampa.mp3",
+      "mostrarHotspot": false,
+      "camara": { "yaw": -0.6723, "pitch": -0.0742 }
+
+      
+    },
+      {
+      "titulo": "Tipon",
+      "subtitulo": "3",
+      "descripcion": "",
+      "imagen": "PiramideRampa/p1.jpg",
+      "modeloUrl": "https://shinnn86.github.io/Rampa/",
+      "audio": "audio/Rampa.mp3",
+      "mostrarHotspot": false,
+      "camara": { "yaw": -2.0689, "pitch": -0.0000 }
+
+      
+    },
+      {
+      "titulo": "Tipon",
+      "subtitulo": "3",
+      "descripcion": "",
+      "imagen": "PiramideRampa/p1.jpg",
+      "modeloUrl": "https://shinnn86.github.io/Rampa/",
+      "audio": "audio/Rampa.mp3",
+      "mostrarHotspot": false,
+      "camara": { "yaw": -0.9070, "pitch": 0.0161 }
+
+      
+    }
+  ],
+  "zona3": [
+    {
+      "titulo": "",
+      "subtitulo": "",
+      "descripcion": "",
+      "imagen": "",
+      "modelo": "",
+      "audio": "",
+      "mostrarHotspot": false,
+      "camara": { "yaw": -0.3658, "pitch": 0.0590 }
+    },
+     {
+      "titulo": "",
+      "subtitulo": "",
+      "descripcion": "",
+      "imagen": "",
+      "modelo": "",
+      "audio": "",
+      "mostrarHotspot": false,
+      "camara": { "yaw": -0.6194, "pitch": 0.0581 }
+    },
+     {
+      "titulo": "",
+      "subtitulo": "",
+      "descripcion": "",
+      "imagen": "",
+      "modelo": "",
+      "audio": "",
+      "mostrarHotspot": false,
+      "camara": { "yaw": -2.5001, "pitch": -0.1384 }
+    },
+     {
+      "titulo": "",
+      "subtitulo": "",
+      "descripcion": "",
+      "imagen": "",
+      "modelo": "",
+      "audio": "",
+      "mostrarHotspot": false,
+      "camara": { "yaw": -1.9552, "pitch": -0.1952 }
+    },
+     {
+      "titulo": "",
+      "subtitulo": "",
+      "descripcion": "",
+      "imagen": "",
+      "modelo": "",
+      "audio": "",
+      "mostrarHotspot": false,
+      "camara": { "yaw": -2.1833, "pitch": -0.2158 }
+    }
+  ],
+  "zona4": [
+    {
+      "titulo": "",
+      "subtitulo": "",
+      "descripcion": "",
+      "imagen": "",
+      "modelo": "",
+      "audio": "",
+      "mostrarHotspot": false,
+      "camara": { "yaw": -1.8254, "pitch": 0.0049 }
+    },
+    {
+      "titulo": "",
+      "subtitulo": "",
+      "descripcion": "",
+      "imagen": "",
+      "modelo": "",
+      "audio": "",
+      "mostrarHotspot": false,
+      "camara": { "yaw": -1.7575, "pitch": 0.1059 }
+    },
+    {
+      "titulo": "",
+      "subtitulo": "",
+      "descripcion": "",
+      "imagen": "",
+      "modelo": "",
+      "audio": "",
+      "mostrarHotspot": false,
+      "camara": { "yaw": -2.1170, "pitch": 0.1249 }
+    }
+    ,
+    {
+      "titulo": "",
+      "subtitulo": "4",
+      "descripcion": "",
+      "imagen": "",
+      "modelo": "",
+      "audio": "",
+      "mostrarHotspot": false,
+      "camara": { "yaw": -2.2579, "pitch": 0.0841 }
+    },
+    {
+      "titulo": "",
+      "subtitulo": "5",
+      "descripcion": "",
+      "imagen": "",
+      "modelo": "",
+      "audio": "",
+      "mostrarHotspot": false,
+      "camara": { "yaw": -1.9921, "pitch": 0.1454 }
+    },
+    {
+      "titulo": "",
+      "subtitulo": "",
+      "descripcion": "",
+      "imagen": "",
+      "modelo": "",
+      "audio": "",
+      "mostrarHotspot": false,
+      "camara": { "yaw": -2.2579, "pitch": 0.0841 }
+    },
+    {
+      "titulo": "",
+      "subtitulo": "",
+      "descripcion": "",
+      "imagen": "",
+      "modelo": "",
+      "audio": "",
+      "mostrarHotspot": false,
+      "camara": { "yaw": 1.2161, "pitch": -0.0829 }
+    },
+    {
+      "titulo": "",
+      "subtitulo": "",
+      "descripcion": "",
+      "imagen": "",
+      "modelo": "",
+      "audio": "",
+      "mostrarHotspot": false,
+      "camara": { "yaw": -0.0554, "pitch": -0.0594 }
+    },
+    {
+      "titulo": "",
+      "subtitulo": "",
+      "descripcion": "",
+      "imagen": "",
+      "modelo": "",
+      "audio": "",
+      "mostrarHotspot": false,
+      "camara": { "yaw": -2.8438, "pitch": 0.0717 }
+    },
+    {
+      "titulo": "",
+      "subtitulo": "",
+      "descripcion": "",
+      "imagen": "",
+      "modelo": "",
+      "audio": "",
+      "mostrarHotspot": false,
+      "camara": { "yaw": -2.2579, "pitch": 0.0841 }
+    },
+    {
+      "titulo": "",
+      "subtitulo": "",
+      "descripcion": "",
+      "imagen": "",
+      "modelo": "",
+      "audio": "",
+      "mostrarHotspot": false,
+      "camara": { "yaw": -2.8341, "pitch": -0.0584 }
+    },
+    {
+      "titulo": "",
+      "subtitulo": "",
+      "descripcion": "",
+      "imagen": "",
+      "modelo": "",
+      "audio": "",
+      "mostrarHotspot": false,
+      "camara": { "yaw": -0.1661, "pitch": -0.1148 }
+    },
+    {
+      "titulo": "",
+      "subtitulo": "",
+      "descripcion": "",
+      "imagen": "",
+      "modelo": "",
+      "audio": "",
+      "mostrarHotspot": false,
+      "camara": { "yaw": -1.6062, "pitch": -0.0593 }
+    },
+    {
+      "titulo": "",
+      "subtitulo": "",
+      "descripcion": "",
+      "imagen": "",
+      "modelo": "",
+      "audio": "",
+      "mostrarHotspot": false,
+      "camara": { "yaw": 0.1266, "pitch": -0.0974 }
+    }
+  ],
+  "zona5": [
+    {
+      "titulo": "Andenes",
+      "subtitulo": "",
+      "descripcion": "",
+      "imagen": "",
+      "modelo": "",
+      "audio": "",
+      "mostrarHotspot": false,
+      "camara": { "yaw": -1.7401, "pitch": 0.0072 }
+    },
+     {
+      "titulo": "Andenes",
+      "subtitulo": "",
+      "descripcion": "",
+      "imagen": "",
+      "modelo": "",
+      "audio": "",
+      "mostrarHotspot": false,
+      "camara": { "yaw": -1.9865, "pitch": 0.0387 }
+    },
+     {
+      "titulo": "",
+      "subtitulo": "",
+      "descripcion": "",
+      "imagen": "",
+      "modelo": "",
+      "audio": "",
+      "mostrarHotspot": false,
+      "camara": { "yaw": -1.5655, "pitch": 0.0313 }
+    },
+     {
+      "titulo": "",
+      "subtitulo": "4",
+      "descripcion": "",
+      "imagen": "",
+      "modelo": "",
+      "audio": "",
+      "mostrarHotspot": false,
+      "camara": { "yaw": -2.9691, "pitch": 0.1512 }
+    },
+     {
+      "titulo": "",
+      "subtitulo": "",
+      "descripcion": "",
+      "imagen": "",
+      "modelo": "",
+      "audio": "",
+      "mostrarHotspot": false,
+      "camara": { "yaw": -2.0111, "pitch": 0.1338 }
+    }
+    ,
+     {
+      "titulo": "",
+      "subtitulo": "",
+      "descripcion": "",
+      "imagen": "",
+      "modelo": "",
+      "audio": "",
+      "mostrarHotspot": false,
+      "camara": { "yaw": -1.8397, "pitch": 0.1947 }
+    }
+    ,
+     {
+      "titulo": "",
+      "subtitulo": "",
+      "descripcion": "",
+      "imagen": "",
+      "modelo": "",
+      "audio": "",
+      "mostrarHotspot": false,
+      "camara": { "yaw": -1.1323, "pitch": 0.2239 }
+    }
+    ,
+     {
+      "titulo": "",
+      "subtitulo": "",
+      "descripcion": "",
+      "imagen": "",
+      "modelo": "",
+      "audio": "",
+      "mostrarHotspot": false,
+      "camara": { "yaw": -1.0488, "pitch": 0.2820 }
+    }
+    ,
+     {
+      "titulo": "",
+      "subtitulo": "",
+      "descripcion": "",
+      "imagen": "",
+      "modelo": "",
+      "audio": "",
+      "mostrarHotspot": false,
+      "camara": { "yaw": -1.0009, "pitch": 0.3048 }
+    }
+    ,
+     {
+      "titulo": "",
+      "subtitulo": "",
+      "descripcion": "",
+      "imagen": "",
+      "modelo": "",
+      "audio": "",
+      "mostrarHotspot": false,
+      "camara": { "yaw": -0.4661, "pitch": -0.0454 }
+    }
+  ]
+}
