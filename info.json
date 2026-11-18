@@ -58,12 +58,12 @@
   "zona2": [
     {
       "titulo": "Tipon",
-      "subtitulo": "1",
-      "descripcion": "",
-      "imagen": "",
+      "subtitulo": "Andenerias",
+      "descripcion": "El complejo de Tipón, ubicado a 23 km de la ciudad del Cusco, constituye uno de los ejemplos más notables de la ingeniería hidráulica y agrícola inca. Sus andenes o terrazas se extienden a lo largo de la ladera de la montaña, organizados en más de doce plataformas de gran tamaño, delimitadas por muros de piedra finamente trabajada.",
+      "imagen": "assets/img-text/Terrazas.JPG",
       "modelo": "",
-      "audio": "",
-       "mostrarHotspot": false,
+      "audio": "audio/tipon.mp3",
+       "mostrarHotspot": true,
        "camara": { "yaw": 1.6721, "pitch": -0.1248 }
     },
     {
@@ -205,13 +205,13 @@
       "camara": { "yaw": -2.5001, "pitch": -0.1384 }
     },
      {
-      "titulo": "",
-      "subtitulo": "",
-      "descripcion": "",
-      "imagen": "",
+      "titulo": "Tipon",
+      "subtitulo": "Fuente de Agua",
+      "descripcion": "El corazón del complejo es la fuente principal, una obra maestra de la ingeniería hidráulica inca. Se trata de una estructura cuadrangular de piedra finamente labrada, desde cuya pared posterior emergen cuatro chorros de agua perfectamente simétricos.",
+      "imagen": "assets/img-text/Fuente.JPG",
       "modelo": "",
-      "audio": "",
-      "mostrarHotspot": false,
+      "audio": "audio/tipon.mp3",
+      "mostrarHotspot": true,
       "camara": { "yaw": -1.9552, "pitch": -0.1952 }
     },
      {
@@ -258,13 +258,13 @@
     }
     ,
     {
-      "titulo": "",
-      "subtitulo": "4",
-      "descripcion": "",
-      "imagen": "",
+      "titulo": "Tipon",
+      "subtitulo": "Intihuatana",
+      "descripcion": "En este punto se encuentra un espacio ceremonial asociado al culto del agua, conocido como intiwatana o adoratorio. Aunque el término “intiwatana” suele relacionarse con marcadores solares, en Tipón este espacio adquiere una connotación distinta, vinculada al agua como elemento sagrado.",
+      "imagen": "assets/img-text/Intiwatana.JPG",
       "modelo": "",
-      "audio": "",
-      "mostrarHotspot": false,
+      "audio": "audio/tipon.mp3",
+      "mostrarHotspot": true,
       "camara": { "yaw": -2.2579, "pitch": 0.0841 }
     },
     {
@@ -400,13 +400,13 @@
       "camara": { "yaw": -1.5655, "pitch": 0.0313 }
     },
      {
-      "titulo": "",
-      "subtitulo": "4",
-      "descripcion": "",
-      "imagen": "",
+      "titulo": "Tipon",
+      "subtitulo": "Canal Inca",
+      "descripcion": "El sistema de canales de Tipón es uno de los más sofisticados del mundo prehispánico. Tallados en piedra con una precisión milimétrica, estos canales conducen el agua desde los manantiales de alta montaña hacia todos los sectores del complejo.",
+      "imagen": "assets/img-text/CANAL DE AGUA.JPG",
       "modelo": "",
-      "audio": "",
-      "mostrarHotspot": false,
+      "audio": "audio/tipon.mp3",
+      "mostrarHotspot": true,
       "camara": { "yaw": -2.9691, "pitch": 0.1512 }
     },
      {
